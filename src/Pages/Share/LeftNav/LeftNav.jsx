@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const LeftNav = () => {
+     const [catagories,setCatagories] = useState([])
+     useEffect(()=>{
+          fetch('http://localhost:5000/catagories')
+          .then(res=>res.json())
+          .then(data=>setCatagories(data))
+          .catch(err=>console.log(err))
+     },[])
+     console.log(catagories);
      return (
-          <div className='border border-1'>
-               <h1>this is a nav left</h1>
+          <div>
+               <h4>All category</h4>
+                {
+                    catagories.map(catagor=> <p key={catagor.id}
+                    catagor={catagor}
+                    >
+                         <Link>{catagor.name}</Link>
+                    </p>)
+                }
           </div>
      );
 };

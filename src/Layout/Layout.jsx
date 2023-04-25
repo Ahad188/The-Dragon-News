@@ -3,6 +3,7 @@ import Header from "../Pages/Share/Header/Header";
 import Footer from "../Pages/Share/Footer/Footer";
 import LeftNav from "../Pages/Share/LeftNav/LeftNav";
 import { Col, Container, Row } from "react-bootstrap";
+import RightNav from "../Pages/Share/RightNav/RightNav";
 
 const Layout = () => {
   return (
@@ -18,7 +19,7 @@ const Layout = () => {
                <h1>main contain</h1>
           </Col>
           <Col lg={3}>
-               <h1>right content</h1>
+               <RightNav></RightNav>
           </Col>
         </Row>
       </Container>
