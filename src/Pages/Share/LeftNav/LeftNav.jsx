@@ -9,7 +9,7 @@ const LeftNav = () => {
           .then(data=>setCatagories(data))
           .catch(err=>console.log(err))
      },[])
-     console.log(catagories);
+     // console.log(catagories);
      return (
           <div>
                <h4>All category</h4>
@@ -17,7 +17,7 @@ const LeftNav = () => {
                     catagories.map(catagor=> <p key={catagor.id}
                     catagor={catagor}
                     >
-                         <Link>{catagor.name}</Link>
+                         <Link to={`./catagories/${catagor.id}`} className='text-black text-decoration-none'>{catagor.name}</Link>
                     </p>)
                 }
           </div>
