@@ -11,51 +11,56 @@ import Private from "../private/Private";
 import Terms from "../Pages/Share/Terms/Terms";
 
 const router = createBrowserRouter([
-     {
-          path:'/',
-          element:<LoginLayout></LoginLayout>,
-          children:[
-               {
-                    path:'/',
-                    element:<Navigate to='/catagories/0'></Navigate>
-               },
-               {
-                    path:'/login',
-                    element:<Login></Login>,
-               },
-               {
-                    path:'/register',
-                    element:<Register></Register>
-               },
-               {
-                    path:'/terms',
-                    element:<Terms></Terms>
-               }
-          ]
-     },
-     
-     {
-          path:'/catagories',
-          element:<Layout></Layout>,
-          children:[
-               {
-                    path:':id',
-                    element:<Catagorie></Catagorie>,
-                    loader:({params})=>fetch(`http://localhost:5000/catagories/${params.id}`)
-               },
-               
-          ]
-     },
-     {
-          path:'news',
-          element:<NewsLayout></NewsLayout>,
-          children:[
-               {
-                    path:':id',
-                    element:<Private><News></News></Private>,
-                    loader:({params})=>fetch(`http://localhost:5000/news/${params.id}`)
-               }
-          ]
-     }
-])
+  {
+    path: "/",
+    element: <LoginLayout></LoginLayout>,
+    children: [
+      {
+        path: "/",
+        element: <Navigate to="/catagories/0"></Navigate>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/terms",
+        element: <Terms></Terms>,
+      },
+    ],
+  },
+
+  {
+    path: "/catagories",
+    element: <Layout></Layout>,
+    children: [
+      {
+        path: ":id",
+        element: <Catagorie></Catagorie>,
+        loader: ({ params }) =>
+          fetch(`https://dragon-news-server-ahad188.vercel.app/catagories/${params.id}`),
+      },
+    ],
+  },
+  {
+    path: "news",
+    element: <NewsLayout></NewsLayout>,
+    children: [
+      {
+        path: ":id",
+        element: (
+          <Private>
+            <News></News>
+          </Private>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://dragon-news-server-ahad188.vercel.app/news/${params.id}`),
+      },
+    ],
+  },
+]);
 export default router;

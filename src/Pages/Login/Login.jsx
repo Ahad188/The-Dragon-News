@@ -8,7 +8,7 @@ const Login = () => {
      const {signIn} = useContext(AuthContext)
      const navigate = useNavigate()
      const location = useLocation()
-     const from = location.state?.from?.pathname || '/categories/0'
+     const from = location?.state?.from?.pathname || '/categories/0'
     
      const handleLogin = event => {
           event.preventDefault();
