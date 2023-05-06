@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import useTitle from '../../hook/useTitle';
 
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
      const navigate = useNavigate()
      const location = useLocation()
      const from = location?.state?.from?.pathname || '/categories/0'
+     useTitle('Login')
     
      const handleLogin = event => {
           event.preventDefault();
